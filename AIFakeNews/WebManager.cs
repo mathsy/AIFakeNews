@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using mshtml;
+using HtmlAgilityPack;
 
 namespace AIFakeNews
 {
@@ -21,15 +22,17 @@ namespace AIFakeNews
             return plainText;
         }
 
-        public static IEnumerator<IHTMLElement> linksfromwebsite(string website)
+        private List<string> ExtractAllAHrefTags(HtmlDocument htmlSnippet)
         {
-            HtmlWeb hw = new HtmlWeb();
-            HtmlDocument doc = hw.Load(/* url */);
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//a[@href]"))
-            {
+            List<string> hrefTags = new List<string>();
 
+            foreach (HtmlNode link in htmlSnippet.DocumentNode.SelectNodes("//a[@href]"))
+            {
+                HtmlAttribute att = link.Attributes["href"];
+                hrefTags.Add(att.Value);
             }
 
+            return hrefTags;
         }
 
 
