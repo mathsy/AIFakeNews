@@ -7,7 +7,9 @@ namespace AIFakeNews
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(WebManager.textfromwebsite("yes"));
+            Console.WriteLine(WebManager.textfromwebsite(@"https:\\de.wikipedia.org"));
+
+
         }
 
        

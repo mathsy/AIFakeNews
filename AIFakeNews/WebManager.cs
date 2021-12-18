@@ -21,6 +21,17 @@ namespace AIFakeNews
             return plainText;
         }
 
+        public static IEnumerator<IHTMLElement> linksfromwebsite(string website)
+        {
+            HtmlWeb hw = new HtmlWeb();
+            HtmlDocument doc = hw.Load(/* url */);
+            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//a[@href]"))
+            {
+
+            }
+
+        }
+
 
     }
 }
