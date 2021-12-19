@@ -8,7 +8,11 @@ namespace AIFakeNews
         static void Main(string[] args)
         {
             Console.WriteLine(WebManager.textfromwebsite(@"https:\\de.wikipedia.org"));
-
+            foreach(string s in WebManager.linksfromwebsite(@"https:\\de.wikipedia.org"))
+            {
+                Console.WriteLine(s);
+            }
+            
 
         }
 

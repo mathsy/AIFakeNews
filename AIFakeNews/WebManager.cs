@@ -22,14 +22,20 @@ namespace AIFakeNews
             return plainText;
         }
 
-        private List<string> ExtractAllAHrefTags(HtmlDocument htmlSnippet)
+        public static List<string> linksfromwebsite(string website)
         {
             List<string> hrefTags = new List<string>();
-
+            HtmlDocument htmlSnippet = new HtmlDocument();
+            var client = new WebClient();
+            var s = client.DownloadString(website);
+            htmlSnippet.LoadHtml(s);
             foreach (HtmlNode link in htmlSnippet.DocumentNode.SelectNodes("//a[@href]"))
             {
                 HtmlAttribute att = link.Attributes["href"];
-                hrefTags.Add(att.Value);
+                if (att.Value.StartsWith("http"))
+                {
+                    hrefTags.Add(att.Value);
+                }
             }
 
             return hrefTags;
