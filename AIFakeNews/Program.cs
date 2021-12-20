@@ -12,7 +12,10 @@ namespace AIFakeNews
             {
                 Console.WriteLine(s);
             }
-            
+
+            TopicalAI.start_AI(true);
+            TopicalAI.start_AI(false);
+            Console.ReadLine();
 
         }
 
